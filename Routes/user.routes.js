@@ -8,6 +8,32 @@ require("dotenv").config();
 const userController=Router();
 
 
+
+
+userController.get("/",authentication,auhorization(["admin"]), async(req,res)=>{
+    const users= await UserModel.find();
+    res.send(users);
+})
+
+userController.delete("/delete/:userId",authentication,auhorization(["admin","customer"]), async (req, res) => {
+    const { userId } = req.params;
+    const deleteproduct = await UserModel.findOneAndDelete({
+      _id: userId,
+      
+    });
+    if (deleteproduct) {
+      res.send("Deleted");
+    } else {
+      res.send("couldn't delete");
+    }
+  });
+
+
+
+
+
+
+
 userController.post("/signup",(req,res)=>{
      const {email,password,name,number}=req.body;
      bcrypt.hash(password, 5,async function(err, hash) {

@@ -6,6 +6,27 @@ require("dotenv").config();
 const merchantController=Router();
 
 
+merchantController.get("/",authentication,auhorization(["admin"]), async(req,res)=>{
+    const users= await MerchantUserModel.find();
+    res.send(users);
+})
+
+
+merchantController.delete("/delete/:userId",authentication,auhorization(["admin","merchant"]), async (req, res) => {
+    const { userId } = req.params;
+    const deleteproduct = await MerchantUserModel.findOneAndDelete({
+      _id: userId,
+      
+    });
+    if (deleteproduct) {
+      res.send("Deleted");
+    } else {
+      res.send("couldn't delete");
+    }
+  });
+
+
+
 merchantController.post("/signup",(req,res)=>{
     const {email,password,name,number}=req.body;
     bcrypt.hash(password, 5,async function(err, hash) {
