@@ -2,6 +2,7 @@ const {Router}=require("express");
 const bcrypt=require("bcrypt");
 const jwt=require("jsonwebtoken");
 const { MerchantUserModel } = require("../Models/MerchantUser.model");
+const { authentication } = require("../middlewares/authentication");
 require("dotenv").config();
 const merchantController=Router();
 
@@ -9,6 +10,7 @@ const merchantController=Router();
 merchantController.get("/",authentication,auhorization(["admin"]), async(req,res)=>{
     const users= await MerchantUserModel.find();
     res.send(users);
+
 })
 
 
