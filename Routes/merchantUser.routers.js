@@ -3,6 +3,7 @@ const bcrypt=require("bcrypt");
 const jwt=require("jsonwebtoken");
 const { MerchantUserModel } = require("../Models/MerchantUser.model");
 const { authentication } = require("../middlewares/authentication");
+const { auhorization } = require("../middlewares/authorization");
 require("dotenv").config();
 const merchantController=Router();
 
