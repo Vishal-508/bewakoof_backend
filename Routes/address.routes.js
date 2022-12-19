@@ -40,10 +40,10 @@ addressController.get("/", async (req, res) => {
     });
     try {
       await address.save();
-      res.send("address created");
+      res.send({message:"address created"});
     } catch (err) {
         console.log(err)
-      res.send("something went wrong");
+      res.send({message:"something went wrong"});
     }
   });
 
@@ -55,9 +55,9 @@ addressController.get("/", async (req, res) => {
       userId: req.body.userId,
     });
     if (deleteproduct) {
-      res.send("Deleted");
+      res.send({message:"Deleted"});
     } else {
-      res.send("couldn't delete");
+      res.send({message:"couldn't delete"});
     }
   });
 
@@ -69,9 +69,9 @@ addressController.get("/", async (req, res) => {
       { ...req.body }
     );
     if (updateProduct) {
-      res.send("updated");
+      res.send({message:"updated"});
     } else {
-      res.send("couldn't update");
+      res.send({message:"couldn't update"});
     }
   });
 

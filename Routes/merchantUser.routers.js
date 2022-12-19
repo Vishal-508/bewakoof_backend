@@ -22,9 +22,9 @@ merchantController.delete("/delete/:userId",authentication,auhorization(["admin"
       
     });
     if (deleteproduct) {
-      res.send("Deleted");
+      res.send({message:"Deleted"});
     } else {
-      res.send("couldn't delete");
+      res.send({message:"couldn't delete"});
     }
   });
 
@@ -34,7 +34,7 @@ merchantController.post("/signup",(req,res)=>{
     const {email,password,name,number}=req.body;
     bcrypt.hash(password, 5,async function(err, hash) {
        if(err){
-           res.send("Something went wrong, please try again later")
+           res.send({message:"Something went wrong, please try again later"})
        }
        const user= new MerchantUserModel({
            email,
@@ -44,10 +44,10 @@ merchantController.post("/signup",(req,res)=>{
        })
        try{
            await user.save();
-           res.send("Signup Successfull")
+           res.send({message:"Signup Successfull"})
        }catch(err){
            console.log(err);
-           res.send("Something went wrong, please try again")
+           res.send({message:"Something went wrong, please try again"})
        }
    });
 
@@ -73,7 +73,7 @@ merchantController.post("/login", async(req,res)=>{
          }
        }); 
    }catch(err){
-       res.send("Invalid credentials, pelase signup if you haven't")
+       res.send({message:"Invalid credentials, pelase signup if you haven't"})
    }  
 })
 

@@ -27,7 +27,7 @@ adminController.post("/adminLogin", async(req,res)=>{
         })
     }catch(err){
         console.log("err");
-        res.send("Invalid Credentials by catch")
+        res.send({message:"Invalid Credentials by catch"})
     }
 
 })

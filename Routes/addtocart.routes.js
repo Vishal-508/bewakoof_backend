@@ -53,10 +53,10 @@ cartController.post("/create", async (req, res) => {
     });
     try {
       await cart.save();
-      res.send("product is added to cart");
+      res.send({message:"product is added to cart"});
     } catch (err) {
         console.log(err)
-      res.send("something went wrong");
+      res.send({message:"something went wrong"});
     }
   });
 
@@ -67,9 +67,9 @@ cartController.post("/create", async (req, res) => {
       userId: req.body.userId,
     });
     if (deleteproduct) {
-      res.send(" Product is Deleted from cart");
+      res.send({message:" Product is Deleted from cart"});
     } else {
-      res.send("couldn't delete");
+      res.send({message:"couldn't delete"});
     }
   });
 
@@ -81,9 +81,9 @@ cartController.post("/create", async (req, res) => {
       { ...req.body }
     );
     if (updateProduct) {
-      res.send("Cart is updated");
+      res.send({message:"Cart is updated"});
     } else {
-      res.send("couldn't update");
+      res.send({message:"couldn't update"});
     }
   });
 

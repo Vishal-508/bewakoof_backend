@@ -98,10 +98,10 @@ allproductController.get("/", async (req, res) => {
     });
     try {
       await product.save();
-      res.send("product is created");
+      res.send({message:"product is created"});
     } catch (err) {
         console.log(err)
-      res.send("something went wrong");
+      res.send({message:"something went wrong"});
     }
   });
   
@@ -112,7 +112,7 @@ allproductController.get("/", async (req, res) => {
       userId: req.body.userId,
     });
     if (deleteproduct) {
-      res.send("Deleted");
+      res.send({message:"Deleted"});
     } else {
       res.send("couldn't delete");
     }
@@ -126,9 +126,9 @@ allproductController.get("/", async (req, res) => {
       { ...req.body }
     );
     if (updateProduct) {
-      res.send("updated");
+      res.send({message:"updated"});
     } else {
-      res.send("couldn't update");
+      res.send({message:"couldn't update"});
     }
   });
 
