@@ -38,7 +38,7 @@ allproductController.get("/", async (req, res) => {
 
   allproductController.post("/create",authentication,auhorization(["merchant","admin"]), async (req, res) => {
     const {
-        _id,
+        id,
         all_offer_price,
         description,
         category,
@@ -64,11 +64,12 @@ allproductController.get("/", async (req, res) => {
         average_rating,
         member_discount,
         product_discount,
-        manufacturer_brand
+        manufacturer_brand,
+        userId
     } = req.body;
   
     const product = new ProductModel({
-        _id,
+        id,
         all_offer_price,
         description,
         category,
@@ -94,7 +95,8 @@ allproductController.get("/", async (req, res) => {
         average_rating,
         member_discount,
         product_discount,
-        manufacturer_brand
+        manufacturer_brand,
+        userId
     });
     try {
       await product.save();

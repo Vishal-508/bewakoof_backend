@@ -17,6 +17,13 @@ userController.get("/",authentication,auhorization(["admin"]), async(req,res)=>{
     res.send(users);
 })
 
+userController.get("/singleUser/:userId",authentication,auhorization(["admin","customer"]), async(req,res)=>{
+    const UserId= req.body.userId;
+    // console.log(UserId)
+    const users= await UserModel.findOne({_id:UserId});
+    res.send(users);
+})
+
 userController.delete("/delete/:userId",authentication,auhorization(["admin","customer"]), async (req, res) => {
     const { userId } = req.params;
     const deleteproduct = await UserModel.findOneAndDelete({
