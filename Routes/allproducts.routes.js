@@ -8,7 +8,7 @@ const allproductController=Router();
 allproductController.get("/", async (req, res) => {
   const query=req.query;
   console.log(query);
-  const{limit=40,page=1}=req.query;
+  const{limit,page}=req.query;
   const {sort}=req.query;
   // var x=1;
   // if(sort==="desc"){
