@@ -12,6 +12,7 @@ const authentication =(req,res,next)=>{
         }else{
             req.body.userId=decoded.userId;
             req.body.email=decoded.email;
+            
             next()
         }
     });

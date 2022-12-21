@@ -74,14 +74,14 @@ userController.post("/login", async(req,res)=>{
 
       var user= await UserModel.findOne({email});
       const hash=user.password;
-  
+      const name=user.name;
       bcrypt.compare(password, hash, function(err, result) {
           if(err){
               res.send({message:"Something went wrong, please try again later"})
           } 
           if(result){
               var token = jwt.sign({userId:user._id, email:email }, process.env.SECRET_KEY);
-              res.send({message:"Login Successfull", token })
+              res.send({message:"Login Successfull", token, name })
           }else{
               res.send({message:"Invalid credentials, pelase signup if you haven't"})
           }
