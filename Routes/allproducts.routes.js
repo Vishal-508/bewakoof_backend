@@ -34,6 +34,15 @@ allproductController.get("/", async (req, res) => {
    // res.send(products);
   });
  
+  allproductController.get("/singleProduct",async(req,res)=>{
+    const query=req.query;
+  
+
+      const products = await ProductModel.findOne(query);
+      res.send(products)
+  
+  })
+
 
 
   allproductController.post("/create",authentication,auhorization(["merchant","admin"]), async (req, res) => {
