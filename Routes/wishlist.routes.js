@@ -11,6 +11,7 @@ wishlistController.get("/", async (req, res) => {
 
   wishlistController.post("/create", async (req, res) => {
     const {
+      Pid,
         id,
         all_offer_price,
         category,
@@ -33,6 +34,7 @@ wishlistController.get("/", async (req, res) => {
 
     const wishlist = new WishlistModel({
         id,
+        Pid,
         all_offer_price,
         category,
         display_image,

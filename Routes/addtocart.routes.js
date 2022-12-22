@@ -11,6 +11,7 @@ cartController.get("/", async (req,res)=>{
 
 cartController.post("/create", async (req, res) => {
     const {
+        Pid,
         id,
         all_offer_price,
         category,
@@ -32,6 +33,7 @@ cartController.post("/create", async (req, res) => {
     } = req.body;
   
     const cart = new AddtocartModel({
+        Pid,
         id,
         all_offer_price,
         category,

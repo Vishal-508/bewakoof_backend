@@ -1,6 +1,7 @@
 const mongoose=require("mongoose");
 
 const wishlistSchema=mongoose.Schema({
+    Pid:{type:String},
     id:{type:Number},
     all_offer_price:{type:Number},
     category:{type:String},
